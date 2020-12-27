@@ -12,9 +12,9 @@ Link: [pariaspe/openai-playground](https://github.com/pariaspe/openai-playground
 - [3. Base](#3-base)
 - [4. Extras](#4-extras)
     - [4.1. Extra 1](#extra-1-vídeo-parte-base)
-    - [4.2. Extra 2](#extra-2-algoritmo-de-planificación)
+    - [4.2. Extra 2](#extra-2-algoritmos-de-planificación)
     - [4.3. Extra 3](#extra-3-nuevo-entorno)
-    - [4.4. Extra 4](#extra4-vídeo-parte-extra)
+    - [4.4. Extra 4](#extra-4-vídeo-parte-extra)
 
 ---
 
@@ -113,7 +113,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
  [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]]
 ```
 
-Utilizando el entorno `csv-pygame-v0`, ligeramente modificado obtenemos:
+Utilizando el entorno `csv-pygame-v0` ligeramente modificado, obtenemos:
 
 ![csv-pygame-v0](/docs/env.png)
 
