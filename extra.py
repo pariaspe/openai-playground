@@ -39,7 +39,7 @@ def get_command(state, next_state):
         return -1
 
 
-env = gym.make('csv-pygame-v0')
+env = gym.make('csv-colored-v0')
 state = env.reset()
 print("state: " + str(state))
 env.render()

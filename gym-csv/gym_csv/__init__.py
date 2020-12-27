@@ -8,3 +8,7 @@ register(
     id='csv-pygame-v0',
     entry_point='gym_csv.envs:CsvPyGameEnv',
 )
+register(
+    id='csv-colored-v0',
+    entry_point='gym_csv.envs:CsvColoredEnv',
+)

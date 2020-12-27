@@ -13,6 +13,7 @@ Link: [pariaspe/openai-playground](https://github.com/pariaspe/openai-playground
 - [4. Extras](#4-extras)
     - [4.1. Extra 1](#extra-1-vídeo-parte-base)
     - [4.2. Extra 2](#extra-2-algoritmo-de-planificación)
+    - [4.3. Extra 3](#extra-3-nuevo-entorno)
 
 ---
 
@@ -25,6 +26,7 @@ Para la práctica se han realizado los siguientes hitos:
 - **Extra**:
     1. Se presenta un **vídeo** que muestra la ejecución de la parte base.
     2. Se añade un **planificador** que calcula la ruta a seguir por el robot.
+    3. Se ha creado un **nuevo entorno** de OpenAi Gym.
 
 ## 2. Estructura de carpetas
 El esquema de organización del repositorio es el siguiente:
@@ -87,6 +89,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Utilizando el entorno `csv-pygame-v0`, ligeramente modificado obtenemos:
 
 ![csv-pygame-v0](/docs/env.png)
+![csv-pygame-v0](/docs/env.png
 
  # HASTA AQUI
 
@@ -173,5 +176,38 @@ while not done:
 ```
 
 ### Extra 3: Nuevo entorno
+
+Se ha creado un nuevo entorno para OpenAI Gym. El nuevo entorno es un entorno de texto con caracteres ANSI que permiten aportar colores para consolas UNIX. El entorno no aporta grandes mejoras, pero se ha explorado la opción de crear nuevos entornos.
+
+Para crear un entorno, se ha registrado el nuevo entorno en `gym-csv/gym_csv/__init__.py`:
+
+```python
+from gym.envs.registration import register
+
+register(
+    id='csv-v0',
+    entry_point='gym_csv.envs:CsvEnv',
+)
+register(
+    id='csv-pygame-v0',
+    entry_point='gym_csv.envs:CsvPyGameEnv',
+)
+register(
+    id='csv-colored-v0',
+    entry_point='gym_csv.envs:CsvColoredEnv',
+)
+```
+
+Además, se ha añadido el import con `CsvColoredEnv` al fichero `gym-csv/gym_csv/envs/__init__.py`:
+
+```python
+from gym_csv.envs.csv_env import CsvEnv
+from gym_csv.envs.csv_pygame_env import CsvPyGameEnv
+from gym_csv.envs.csv_colored_env import CsvColoredEnv
+```
+El código completo del entorno se puede ver en el fichero `csv_colored_env.py`.
+Si ejecutamos el script `gym-csv-display.py` observamos el siguiente entorno:
+
+![csv-colored-v0](/docs/new_env.png)
 
 ### Video 4: Extra
