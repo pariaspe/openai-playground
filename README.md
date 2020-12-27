@@ -12,6 +12,7 @@ Link: [pariaspe/openai-playground](https://github.com/pariaspe/openai-playground
 - [3. Base](#3-base)
 - [4. Extras](#4-extras)
     - [4.1. Extra 1](#extra-1-vídeo-parte-base)
+    - [4.2. Extra 2](#extra-2-algoritmo-de-planificación)
 
 ---
 
@@ -23,6 +24,7 @@ Para la práctica se han realizado los siguientes hitos:
 
 - **Extra**:
     1. Se presenta un **vídeo** que muestra la ejecución de la parte base.
+    2. Se añade un **planificador** que calcula la ruta a seguir por el robot.
 
 ## 2. Estructura de carpetas
 El esquema de organización del repositorio es el siguiente:
@@ -133,5 +135,43 @@ for i in range(6):
 ### Extra 1: Vídeo parte base
 
 Se muestra en vídeo el resultado de la ejecución de la parte base.
-https://youtu.be/-FdJp9hCBXU
+
 [![OpenAI Gym Base](http://img.youtube.com/vi/-FdJp9hCBXU/0.jpg)](http://www.youtube.com/watch?v=-FdJp9hCBXU)
+
+### Extra 2: Algoritmos de planificación
+
+Se añade un planificador que calcula la ruta a seguir por el robot para alcanzar la meta. El algoritmo de planificación utilizado puede elegirse entre DFS, BFS, Dijkstra y A*, modificando el parametro `alg` de la función `get_route`. La parte más relevante del nuevo código se muestra a continuación:
+
+```python
+env = gym.make('csv-pygame-v0')
+state = env.reset()
+print("state: " + str(state))
+env.render()
+time.sleep(0.5)
+
+# Algorithms available: dfs, bfs, dijkstra, astar
+route = alg_hub.get_route("map1", START, GOAL, alg="dijkstra")
+
+done = False
+while not done:
+    try:
+        pos = route.pop(0)  # next step
+        next_state = pos[0] + pos[1]*10
+        command = get_command(state, next_state)
+        if command == 4:  # actual pos, continue
+            continue
+        elif command == -1:
+            print("[Error] Bad command.")
+            break
+    except IndexError:
+        command = 0  # no more steps
+
+    state, reward, done, _ = env.step(command)
+    env.render()
+    print("new_state: " + str(state) + ", reward: " + str(reward) + ", done: " + str(done))
+    time.sleep(SIM_PERIOD_MS/1000.0)
+```
+
+### Extra 3: Nuevo entorno
+
+### Video 4: Extra
