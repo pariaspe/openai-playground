@@ -14,6 +14,7 @@ Link: [pariaspe/openai-playground](https://github.com/pariaspe/openai-playground
     - [4.1. Extra 1](#extra-1-vídeo-parte-base)
     - [4.2. Extra 2](#extra-2-algoritmo-de-planificación)
     - [4.3. Extra 3](#extra-3-nuevo-entorno)
+    - [4.4. Extra 4](#extra4-vídeo-parte-extra)
 
 ---
 
@@ -27,11 +28,37 @@ Para la práctica se han realizado los siguientes hitos:
     1. Se presenta un **vídeo** que muestra la ejecución de la parte base.
     2. Se añade un **planificador** que calcula la ruta a seguir por el robot.
     3. Se ha creado un **nuevo entorno** de OpenAi Gym.
+    4. Se adjunta un **vídeo** que muestra la ejecución de la parte extra.
 
 ## 2. Estructura de carpetas
 El esquema de organización del repositorio es el siguiente:
 ```
 .
++-- docs (imgs..)
++-- gym-csv
+    +-- examples
+        +-- gym-csv-display.py
+        +-- gym-csv-loop.py
+        +-- map1.csv
+    +-- gym_csv
+        +-- envs
+            +-- __init__.py
+            +-- csv_env.py
+            +-- csv_pygame_env.py
+            +-- csv_colored_env.py
+        +-- __init__.py
+    +-- README.md
+    +-- setup.py
++-- tools
+    +-- alg_hub.py
+    +-- astar.py
+    +-- bfs.py
+    +-- dfs-py
+    +-- dijkstra.py
+    +-- utils.py
++-- base.py
++-- extra-py
++-- map1.csv
 +-- README.md
 ```
 
@@ -89,9 +116,6 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Utilizando el entorno `csv-pygame-v0`, ligeramente modificado obtenemos:
 
 ![csv-pygame-v0](/docs/env.png)
-![csv-pygame-v0](/docs/env.png
-
- # HASTA AQUI
 
 Tras tener el entorno listo se crea el siguiente código (`base.py`) en python que se encarga de controlar al robot para que llegue a su destino. En primer lugar se carga el entorno, en este caso utilizamos `csv-pygame-v0`, pero el algoritmo sería el mismo para otros entornos. A continuación, se ejecutan dos bucles que se encargan de mover al robot (actualizando el estado) primero a la derecha y después hacia abajo hasta llegar a la meta.
 
@@ -210,4 +234,8 @@ Si ejecutamos el script `gym-csv-display.py` observamos el siguiente entorno:
 
 ![csv-colored-v0](/docs/new_env.png)
 
-### Video 4: Extra
+### Extra 4: Vídeo Parte Extra
+
+El siguiente vídeo muestra un planificador Dijkstra sobre el nuevo entorno creado.
+
+[![OpenAI Gym Extra](http://img.youtube.com/vi/0z0vXWQ-Y64/0.jpg)](http://www.youtube.com/watch?v=0z0vXWQ-Y64)
